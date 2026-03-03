@@ -67,8 +67,6 @@
 						<a href={row.project.href.toString()} target="_blank" rel="nooperner"
 							>{row.project.name}</a
 						>
-					{:else}
-						&nbsp;
 					{/if}
 				</td>
 				<td>
@@ -76,8 +74,6 @@
 						<a href={row.practice.href.toString()} target="_blank" rel="nooperner"
 							>{row.practice.name}</a
 						>
-					{:else}
-						&nbsp;
 					{/if}
 				</td>
 				<td>
@@ -85,8 +81,6 @@
 						<a href={row.experiment.href.toString()} target="_blank" rel="nooperner"
 							>{row.experiment.name}</a
 						>
-					{:else}
-						&nbsp;
 					{/if}
 				</td>
 			</tr>
