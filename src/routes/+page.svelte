@@ -9,18 +9,26 @@
 			}));
 
 	const headers = ['Projects', 'Practice', 'Experimentation'];
-	const projects = buildUrls([
-		{ name: 'Açaí', href: 'acai' },
+
+	const projects = [
+		{ name: 'Açaí (Adaptive Community-Assisted Infrastructure)', href: 'acai' },
 		{ name: 'Portfolio', href: 'portfolio' },
-		{ name: 'CiviClick', href: 'civiclick' },
-		{ name: 'Flappy Bird', href: 'flappy-bird' },
-		{ name: 'Wealth Link', href: 'wealthlink' }
-	]);
+		{ name: 'CiviClick', href: 'CiviClick' },
+		{ name: 'Flappy Bird', href: 'flappy-bird' }
+	].map((link) => ({
+		name: link.name,
+		href: new URL(link.href, baseUrl)
+	}));
 	projects.push({
 		name: 'PhilNITS Vault',
 		href: new URL('usc-cisco/philnits-vault', 'https://github.com/')
 	});
+	projects.push({
+		name: 'Wealth Link',
+		href: new URL('RaleLeaf/WealthLink', 'https://github.com/')
+	});
 	projects.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+
 	const practice = buildUrls([
 		{ name: 'Spring Boot 2025.06.24', href: 'appdev-20250624' },
 		{ name: 'Spring Boot 2025.07.09', href: 'appdev-20250709' },
@@ -28,11 +36,12 @@
 		{ name: 'CADCOMM', href: 'cadcomm' },
 		{ name: 'Next.js Dashboard', href: 'learn-nextjs' },
 		{ name: 'Android 2025.03.24', href: 'mob-dev-2025-03-24' },
-		{ name: 'Android practice', href: 'mobiledev' },
+		{ name: 'Android practice', href: 'MobileDev' },
 		{ name: 'QR Code Component (Frontend Mentor)', href: 'qr-code-component' },
 		{ name: 'SQLite Activity (Spring Boot)', href: 'sqlite-activity' },
-		{ name: 'Ticket App (Android)', href: 'ticket-app' }
+		{ name: 'Ticket App (Android)', href: 'Ticket-App' }
 	]);
+
 	const experiments = buildUrls([
 		{ name: 'C', href: 'c' },
 		{ name: 'C++', href: 'cpp-explorations' },
@@ -40,7 +49,6 @@
 		{ name: 'Web', href: 'web-dev-explorations' }
 	]);
 
-	const maxLength = Math.max(projects.length, practice.length, experiments.length);
 	const rows: { [key: string]: { name: string; href: URL } }[] = practice.map((prac, index) => ({
 		project: projects[index] || null,
 		practice: prac,
@@ -48,7 +56,7 @@
 	}));
 </script>
 
-<h1 class="text-xl font-bold">
+<h1 class="text-3xl font-bold">
 	<a href={`${baseUrl}`} target="_blank" rel="noopener">Celian4862's</a> Software Development Portfolio
 </h1>
 <table>
@@ -62,23 +70,23 @@
 	<tbody>
 		{#each rows as row}
 			<tr>
-				<td>
+				<td class="px-5">
 					{#if row.project}
-						<a href={row.project.href.toString()} target="_blank" rel="nooperner"
+						- <a href={row.project.href.toString()} target="_blank" rel="nooperner"
 							>{row.project.name}</a
 						>
 					{/if}
 				</td>
-				<td>
+				<td class="px-5">
 					{#if row.practice}
-						<a href={row.practice.href.toString()} target="_blank" rel="nooperner"
+						- <a href={row.practice.href.toString()} target="_blank" rel="nooperner"
 							>{row.practice.name}</a
 						>
 					{/if}
 				</td>
-				<td>
+				<td class="px-5">
 					{#if row.experiment}
-						<a href={row.experiment.href.toString()} target="_blank" rel="nooperner"
+						- <a href={row.experiment.href.toString()} target="_blank" rel="nooperner"
 							>{row.experiment.name}</a
 						>
 					{/if}
